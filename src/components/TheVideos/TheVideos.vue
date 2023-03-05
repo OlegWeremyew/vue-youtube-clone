@@ -6,7 +6,7 @@
   </main>
 </template>
 <script>
-import VideoItem from "./VideoItem.vue";
+import VideoItem from "./VideoItem/VideoItem.vue";
 
 export default {
   components: {VideoItem}
