@@ -8,7 +8,7 @@
         <base-icon name="checkCircle" class="w-3.5 h-3.5 ml-1"></base-icon>
       </div>
       <div>
-        <span>{{index}} 1K views &middot; {{index}} 1 day ago</span>
+        <span v-html="summary"></span>
       </div>
     </div>
     <button
@@ -25,6 +25,12 @@ export default {
   name: "VideoItemInfo",
   props: ['index'],
   components: {BaseIcon},
+  computed: {
+    summary(){
+      const days = this.index === 1 ? 'day' : 'days'
+      return `${this.index} 1K views &middot; ${this.index} ${days} ago`
+    }
+  }
 }
 </script>
 

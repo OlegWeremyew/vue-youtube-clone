@@ -2,8 +2,11 @@
   <header class="flex justify-between fixed z-30 w-full">
     <div class="lg:w-1/4 flex">
       <div class="flex items-center xl:w-64 xl:bg-white pl-4">
-        <button class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none">
-          <base-icon name="menu"></base-icon>
+        <button
+            @click="$emit('openMobileSidebar')"
+            class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none"
+        >
+          <BaseIcon name="menu"/>
         </button>
         <logo-main></logo-main>
       </div>
@@ -13,27 +16,27 @@
     >
       <the-search></the-search>
       <button class="ml-4 focus:outline-none">
-        <base-icon name="microphone" class="w-5 h-5"></base-icon>
+        <BaseIcon name="microphone" class="w-5 h-5"/>
       </button>
     </div>
     <div
         class="flex items-center justify-end lg:w-1/4 sm:space-x-3 p-2 sm:px-4"
     >
       <button class="sm:hidden p-2 focus:outline-none">
-        <base-icon name="microphone" class="w-5 h-5"></base-icon>
+        <BaseIcon name="microphone" class="w-5 h-5"/>
       </button>
       <button class="sm:hidden p-2 focus:outline-none">
-        <base-icon name="search" class="w-5 h-5"></base-icon>
+        <BaseIcon name="search" class="w-5 h-5"/>
       </button>
       <button class="relative group p-2 focus:outline-none">
-        <base-icon name="viewGrid" class="h-5 w-5"></base-icon>
-<!--        <the-drop-down-apps></the-drop-down-apps>-->
+        <BaseIcon name="viewGrid" class="h-5 w-5"/>
+        <!--        <the-drop-down-apps></the-drop-down-apps>-->
       </button>
       <button class="relative group p-2 focus:outline-none">
-        <base-icon name="dotsVertical" class="h-5 w-5"></base-icon>
-<!--        <the-dropdown-settings></the-dropdown-settings>-->
+        <BaseIcon name="dotsVertical" class="h-5 w-5"/>
+        <!--        <the-dropdown-settings></the-dropdown-settings>-->
       </button>
-      <button-login></button-login>
+      <ButtonLogin/>
     </div>
   </header>
 </template>
@@ -46,6 +49,10 @@ import ButtonLogin from "../Common/ButtonLogin.vue";
 import BaseIcon from "../Common/BaseIcon.vue";
 
 export default {
-  components: {BaseIcon, ButtonLogin, TheSearch, LogoMain, TheDropdownSettings, TheDropDownApps}
+  name: 'TheHeader',
+  emits: {
+    openMobileSidebar: null,
+  },
+  components: {BaseIcon, ButtonLogin, TheSearch, LogoMain, TheDropdownSettings, TheDropDownApps},
 }
 </script>

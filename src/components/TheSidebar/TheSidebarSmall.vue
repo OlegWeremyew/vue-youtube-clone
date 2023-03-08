@@ -105,3 +105,9 @@
     </section>
   </aside>
 </template>
+
+<script>
+export default {
+  name: 'TheSidebarSmall',
+}
+</script>

@@ -9,6 +9,7 @@
 import VideoItem from "./VideoItem/VideoItem.vue";
 
 export default {
+  name: 'TheVideos',
   components: {VideoItem}
 }
 </script>

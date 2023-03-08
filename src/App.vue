@@ -1,19 +1,40 @@
 <template>
-  <TheHeader />
-  <TheSidebarSmall />
-  <TheSidebar />
-  <TheSidebarMobile />
-  <TheCategories />
-  <TheVideos />
+  <TheHeader @open-mobile-sidebar="openMobileSidebar"/>
+  <TheSidebarSmall/>
+  <TheSidebar/>
+  <TheSidebarMobile
+      :is-open="isMobileSidebarOpen"
+      @close="closeMobileSidebar"
+  />
+  <TheCategories/>
+  <TheVideos/>
 </template>
 
-<script setup>
-import TheHeader from './components/TheHeader/TheHeader.vue'
-import TheSidebarSmall from './components/TheSidebarSmall.vue'
-import TheSidebar from './components/TheSidebar.vue'
-import TheSidebarMobile from './components/TheSidebarMobile.vue'
-import TheCategories from './components/TheCategories/TheCategories.vue'
-import TheVideos from './components/TheVideos/TheVideos.vue'
+<script>
+
+import TheSidebarSmall from "./components/TheSidebar/TheSidebarSmall.vue";
+import TheSidebar from "./components/TheSidebar/TheSidebar.vue";
+import TheSidebarMobile from "./components/TheSidebar/TheSidebarMobile/TheSidebarMobile.vue";
+import TheCategories from "./components/TheCategories/TheCategories.vue";
+import TheVideos from "./components/TheVideos/TheVideos.vue";
+import TheHeader from "./components/TheHeader/TheHeader.vue";
+
+export default {
+  name: 'App',
+  components: {TheHeader, TheVideos, TheCategories, TheSidebarMobile, TheSidebar, TheSidebarSmall},
+  data: () => ({
+    isMobileSidebarOpen: false
+  }),
+  methods: {
+    openMobileSidebar() {
+      this.isMobileSidebarOpen = true
+    },
+    closeMobileSidebar() {
+      this.isMobileSidebarOpen = false
+    },
+  },
+}
+
 </script>
 
 <style scoped>
