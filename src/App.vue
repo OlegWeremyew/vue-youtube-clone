@@ -1,13 +1,13 @@
 <template>
-  <TheHeader @open-mobile-sidebar="openMobileSidebar"/>
-  <TheSidebarSmall/>
-  <TheSidebar/>
+  <TheHeader @toggle-sidebar="toggleSidebar"/>
+  <TheSidebarSmall :is-open="sidebarState === 'compact'"/>
+  <TheSidebar :is-open="sidebarState === 'normal'"/>
   <TheSidebarMobile
       :is-open="isMobileSidebarOpen"
       @close="closeMobileSidebar"
   />
-  <TheCategories/>
-  <TheVideos/>
+  <TheCategories :is-sidebar-open="sidebarState === 'normal'"/>
+  <TheVideos :is-sidebar-open="sidebarState === 'normal'"/>
 </template>
 
 <script>
@@ -23,15 +23,32 @@ export default {
   name: 'App',
   components: {TheHeader, TheVideos, TheCategories, TheSidebarMobile, TheSidebar, TheSidebarSmall},
   data: () => ({
-    isMobileSidebarOpen: false
+    isMobileSidebarOpen: false,
+    sidebarState: null
   }),
   methods: {
+    toggleSidebar() {
+      if (window.innerWidth >= 1280) {
+        this.sidebarState = this.sidebarState === 'normal' ? 'compact' : 'normal'
+      } else {
+        this.openMobileSidebar()
+      }
+    },
     openMobileSidebar() {
       this.isMobileSidebarOpen = true
     },
     closeMobileSidebar() {
       this.isMobileSidebarOpen = false
     },
+  },
+  mounted() {
+    if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+      this.sidebarState = 'compact'
+    }
+
+    if (window.innerWidth >= 1280) {
+      this.sidebarState = 'normal'
+    }
   },
 }
 
