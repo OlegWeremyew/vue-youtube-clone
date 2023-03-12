@@ -8,13 +8,13 @@
         >
           <BaseIcon name="menu"/>
         </button>
-        <logo-main></logo-main>
+        <LogoMain/>
       </div>
     </div>
     <div
         class="hidden sm:flex items-center justify-end p-2.5 pl-8 md:pl-12 md:px-8 flex-1 lg:px-0 lg:w-1/2 max-w-screen-md"
     >
-      <the-search></the-search>
+      <TheSearch/>
       <button class="ml-4 focus:outline-none">
         <BaseIcon name="microphone" class="w-5 h-5"/>
       </button>
@@ -28,15 +28,11 @@
       <button class="sm:hidden p-2 focus:outline-none">
         <BaseIcon name="search" class="w-5 h-5"/>
       </button>
-      <button class="relative group p-2 focus:outline-none">
-        <BaseIcon name="viewGrid" class="h-5 w-5"/>
-        <!--        <the-drop-down-apps></the-drop-down-apps>-->
-      </button>
-      <button class="relative group p-2 focus:outline-none">
-        <BaseIcon name="dotsVertical" class="h-5 w-5"/>
-        <!--        <the-dropdown-settings></the-dropdown-settings>-->
-      </button>
+
+      <TheDropDownApps/>
+      <TheDropdownSettings/>
       <ButtonLogin/>
+
     </div>
   </header>
 </template>

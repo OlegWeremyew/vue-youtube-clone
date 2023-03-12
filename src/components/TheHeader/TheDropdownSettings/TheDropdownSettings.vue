@@ -1,37 +1,60 @@
 <template>
-  <div
-      class="opacity-0 group-hover:opacity-100 absolute top-9 -right-full sm:right-0 bg-white w-72 border border-t-0"
-  >
-    <section class="py-2 border-b">
-      <ul>
-        <drop-down-settings-list-item
-            v-for="listItem in ListItems.slice(0,8)"
-            :key="listItem.label"
-            :icon="listItem.icon"
-            :label="listItem.label"
-            :with-sub-menu="listItem.withSubMenu"
-        ></drop-down-settings-list-item>
+  <div class="relative">
+    <button
+        @click="isOpen = !isOpen"
+        type="button"
+        class="relative p-2 focus:outline-none"
+    >
+      <BaseIcon name="dotsVertical" class="h-5 w-5"/>
+    </button>
 
-      </ul>
-    </section>
-    <section class="py-2">
-      <ul>
-        <drop-down-settings-list-item
-            :label="ListItems[8].label"
-            with-sub-menu
-        ></drop-down-settings-list-item>
-      </ul>
-    </section>
+    <transition
+        enter-active-class="transition ease-out duration-100"
+        enter-from-class="transition opacity-0 scale-95"
+        enter-to-class="transform ease-in scale-100"
+        leave-active-class="transition ease-in duration-75"
+        leave-from-class="transform opacity-100 scale-100"
+        leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+          v-if="isOpen"
+          ref="dropdown"
+          tabindex="-1"
+          @keydown.esc="isOpen = false"
+          class="absolute top-9 -right-full sm:right-0 bg-white w-72 border border-t-0  focus:outline-none"
+      >
+        <section class="py-2 border-b">
+          <ul>
+            <DropDownsListItem
+                v-for="listItem in ListItems.slice(0,8)"
+                :key="listItem.label"
+                :icon="listItem.icon"
+                :label="listItem.label"
+                :with-sub-menu="listItem.withSubMenu"
+            />
+          </ul>
+        </section>
+        <section class="py-2">
+          <ul>
+            <DropDownsListItem
+                :label="ListItems[8].label"
+                with-sub-menu
+            />
+          </ul>
+        </section>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import BaseIcon from "../../Common/BaseIcon.vue";
 import DropDownSettingsListItem from "./DropDownSettingsListItem.vue";
+import DropDownsListItem from "../TheDropDownApps/DropDownsListItem.vue";
 
 export default {
   name: "TheDropdownSettings",
-  components: {DropDownSettingsListItem, BaseIcon},
+  components: {DropDownsListItem, DropDownSettingsListItem, BaseIcon},
   data: () => ({
     ListItems: [
       {label: 'Appearance: Light', icon: 'sun', withSubMenu: true},
@@ -43,8 +66,25 @@ export default {
       {label: 'Send feedback', icon: 'chatAlt', withSubMenu: false},
       {label: 'Keyboard shortcuts', icon: 'calculator', withSubMenu: false},
       {label: 'Restricted Mode: Off', icon: null, withSubMenu: true},
-    ]
-  })
+    ],
+    isOpen: false
+  }),
+  mounted() {
+    window.addEventListener('click', ({target}) => {
+      if (!this.$el.contains(target)) {
+        this.isOpen = false
+      }
+    })
+  },
+  watch: {
+    isOpen() {
+      this.$nextTick(() => {
+        if (this.isOpen) {
+          this.$refs.dropdown.focus()
+        }
+      })
+    },
+  }
 }
 </script>
 

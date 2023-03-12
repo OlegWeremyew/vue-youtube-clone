@@ -1,18 +1,18 @@
 <template>
   <TheHeader @toggle-sidebar="toggleSidebar"/>
-  <TheSidebarSmall :is-open="sidebarState === 'compact'"/>
-  <TheSidebar :is-open="sidebarState === 'normal'"/>
+  <TheSidebarCompact v-if="isCompactSidebarOpen"/>
+  <TheSidebar v-if="isSidebarOpen"/>
   <TheSidebarMobile
       :is-open="isMobileSidebarOpen"
       @close="closeMobileSidebar"
   />
-  <TheCategories :is-sidebar-open="sidebarState === 'normal'"/>
-  <TheVideos :is-sidebar-open="sidebarState === 'normal'"/>
+  <TheCategories :is-sidebar-open="isSidebarOpen"/>
+  <TheVideos :is-sidebar-open="isSidebarOpen"/>
 </template>
 
 <script>
 
-import TheSidebarSmall from "./components/TheSidebar/TheSidebarSmall.vue";
+import TheSidebarCompact from "./components/TheSidebar/TheSidebarCompact/TheSidebarCompact.vue";
 import TheSidebar from "./components/TheSidebar/TheSidebar.vue";
 import TheSidebarMobile from "./components/TheSidebar/TheSidebarMobile/TheSidebarMobile.vue";
 import TheCategories from "./components/TheCategories/TheCategories.vue";
@@ -21,15 +21,31 @@ import TheHeader from "./components/TheHeader/TheHeader.vue";
 
 export default {
   name: 'App',
-  components: {TheHeader, TheVideos, TheCategories, TheSidebarMobile, TheSidebar, TheSidebarSmall},
+  components: {TheHeader, TheVideos, TheCategories, TheSidebarMobile, TheSidebar, TheSidebarCompact},
   data: () => ({
     isMobileSidebarOpen: false,
-    sidebarState: null
+    isCompactSidebarOpen: false,
+    isSidebarOpen: false,
+    isCompactSidebarActive: false,
   }),
   methods: {
+    onResize() {
+      if (window.innerWidth < 768) {
+        this.isCompactSidebarOpen = false
+        this.isSidebarOpen = false
+      } else if (window.innerWidth < 1280) {
+        this.isCompactSidebarOpen = true
+        this.isSidebarOpen = false
+      } else {
+        this.isCompactSidebarOpen = this.sidebarState
+        this.isSidebarOpen = !this.sidebarState
+        this.isMobileSidebarOpen = false
+      }
+    },
     toggleSidebar() {
       if (window.innerWidth >= 1280) {
-        this.sidebarState = this.sidebarState === 'normal' ? 'compact' : 'normal'
+        this.sidebarState = !this.sidebarState
+        this.onResize()
       } else {
         this.openMobileSidebar()
       }
@@ -42,13 +58,9 @@ export default {
     },
   },
   mounted() {
-    if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-      this.sidebarState = 'compact'
-    }
+    this.onResize()
 
-    if (window.innerWidth >= 1280) {
-      this.sidebarState = 'normal'
-    }
+    window.addEventListener('resize', this.onResize)
   },
 }
 

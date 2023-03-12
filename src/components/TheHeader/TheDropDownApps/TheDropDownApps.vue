@@ -1,24 +1,47 @@
 <template>
-  <div
-      class="opacity-0 group-hover:opacity-100 absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0"
-  >
-    <section class="py-2 border-b">
-      <ul>
-        <drop-downs-list-item label="YouTube TV"></drop-downs-list-item>
-      </ul>
-    </section>
-    <section class="py-2 border-b">
-      <ul>
-        <drop-downs-list-item label="YouTube Music TV"></drop-downs-list-item>
-        <drop-downs-list-item label="YouTube Kids"></drop-downs-list-item>
-      </ul>
-    </section>
-    <section class="py-2">
-      <ul>
-        <drop-downs-list-item label="Creator Academy"></drop-downs-list-item>
-        <drop-downs-list-item label="YouTube for Artists"></drop-downs-list-item>
-      </ul>
-    </section>
+  <div class="relative">
+    <button
+        @click="isOpen = !isOpen"
+        type="button"
+        class="relative p-2 focus:outline-none"
+    >
+      <BaseIcon name="viewGrid" class="h-5 w-5"/>
+    </button>
+
+    <transition
+        enter-active-class="transition ease-out duration-100"
+        enter-from-class="transition opacity-0 scale-95"
+        enter-to-class="transform ease-in scale-100"
+        leave-active-class="transition ease-in duration-75"
+        leave-from-class="transform opacity-100 scale-100"
+        leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+          v-show="isOpen"
+          ref="dropdown"
+          tabindex="-1"
+          @keydown.esc="isOpen = false"
+          class="absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0 focus:outline-none"
+      >
+        <section class="py-2 border-b">
+          <ul>
+            <DropDownsListItem label="YouTube TV"/>
+          </ul>
+        </section>
+        <section class="py-2 border-b">
+          <ul>
+            <DropDownsListItem label="YouTube Music TV"/>
+            <DropDownsListItem label="YouTube Kids"/>
+          </ul>
+        </section>
+        <section class="py-2">
+          <ul>
+            <DropDownsListItem label="Creator Academy"/>
+            <DropDownsListItem label="YouTube for Artists"/>
+          </ul>
+        </section>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -28,11 +51,29 @@ import DropDownsListItem from "./DropDownsListItem.vue";
 
 export default {
   name: "TheDropDownApps",
+  data: () => ({
+    isOpen: false
+  }),
   components: {
     DropDownsListItem,
     BaseIcon,
+  },
+  mounted() {
+    window.addEventListener('click', ({target}) => {
+      if (!this.$el.contains(target)) {
+        this.isOpen = false
+      }
+    })
+  },
+  watch: {
+    isOpen() {
+      this.$nextTick(() => {
+        if (this.isOpen) {
+          this.$refs.dropdown.focus()
+        }
+      })
+    },
   }
-
 }
 </script>
 
