@@ -1,13 +1,13 @@
 <template>
-  <a href="#" class="mb-7 group">
-    <video-item-thumbnail :index="index"></video-item-thumbnail>
-    <video-item-info  :index="index"></video-item-info>
+  <a class="mb-7 group">
+    <VideoItemThumbnail :index="index"/>
+    <VideoItemInfo :index="index"/>
   </a>
 </template>
 
 <script>
-import VideoItemThumbnail from "./VideoItemThumbnail.vue";
-import VideoItemInfo from "./VideoItemInfo.vue";
+import VideoItemThumbnail from "./VideoItemThumbnail/VideoItemThumbnail.vue";
+import VideoItemInfo from "./VideoItemInfo/VideoItemInfo.vue";
 
 export default {
   name: "VideoItem",
