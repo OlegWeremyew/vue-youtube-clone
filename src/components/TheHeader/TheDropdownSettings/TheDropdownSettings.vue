@@ -1,111 +1,90 @@
 <template>
   <div class="relative">
     <BaseTooltip text="Settings">
-      <button
-          @click="isOpen = !isOpen"
-          type="button"
-          class="relative p-2 focus:outline-none"
-      >
-        <BaseIcon name="dotsVertical" class="h-5 w-5"/>
+      <button @click="isOpen = !isOpen" class="relative p-2 focus:outline-none">
+        <BaseIcon name="dotsVertical" class="w-5 h-5" />
       </button>
     </BaseTooltip>
-
     <transition
         enter-active-class="transition ease-out duration-100"
         enter-from-class="transition opacity-0 scale-95"
-        enter-to-class="transform ease-in scale-100"
+        enter-to-class="transform opacity-100 scale-100"
         leave-active-class="transition ease-in duration-75"
         leave-from-class="transform opacity-100 scale-100"
         leave-to-class="transform opacity-0 scale-95"
     >
       <div
-          v-if="isOpen"
+          v-show="isOpen"
           ref="dropdown"
-          tabindex="-1"
           @keydown.esc="isOpen = false"
+          tabindex="-1"
           :class="dropdownClasses"
       >
-        <section class="py-2 border-b">
-          <ul>
-            <DropDownSettingsListItem
-                v-for="listItem in ListItems.slice(0,8)"
-                :key="listItem.label"
-                :icon="listItem.icon"
-                :label="listItem.label"
-                :with-sub-menu="listItem.withSubMenu"
-            />
-          </ul>
-        </section>
-        <section class="py-2">
-          <ul>
-            <DropDownSettingsListItem
-                :label="ListItems[8].label"
-                with-sub-menu
-            />
-          </ul>
-        </section>
+        <TheDropdownSettingsMain
+            v-if="selectedMenu === 'main'"
+            @select-menu="showSelectedMenu"
+        />
+        <TheDropdownSettingsAppearance
+            v-else-if="selectedMenu === 'appearance'"
+            @select-menu="showSelectedMenu"
+        />
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+
 import BaseIcon from "../../Common/BaseIcon.vue";
-import DropDownSettingsListItem from "./DropDownSettingsListItem.vue";
 import BaseTooltip from "../../Common/BaseTooltip.vue";
+import TheDropdownSettingsMain from "./TheDropdownSettingsMain/TheDropdownSettingsMain.vue";
+import TheDropdownSettingsAppearance from "./TheDropdownSettingsAppearance/TheDropdownSettingsAppearance.vue";
 
 export default {
-  name: "TheDropdownSettings",
-  components: {BaseTooltip, DropDownSettingsListItem, BaseIcon},
-  data: () => ({
-    ListItems: [
-      {label: 'Appearance: Light', icon: 'sun', withSubMenu: true},
-      {label: 'Language: English', icon: 'translate', withSubMenu: true},
-      {label: 'Location: Ukraine', icon: 'globeAlt', withSubMenu: true},
-      {label: 'Settings', icon: 'cog', withSubMenu: false},
-      {label: 'Your data in YouTube', icon: 'shieldCheck', withSubMenu: false},
-      {label: 'Help', icon: 'questionMarkCircle', withSubMenu: false},
-      {label: 'Send feedback', icon: 'chatAlt', withSubMenu: false},
-      {label: 'Keyboard shortcuts', icon: 'calculator', withSubMenu: false},
-      {label: 'Restricted Mode: Off', icon: null, withSubMenu: true},
-    ],
-    isOpen: false
-  }),
-  computed: {
-    dropdownClasses() {
-      return [
+  components: {
+    BaseIcon,
+    BaseTooltip,
+    TheDropdownSettingsMain,
+    TheDropdownSettingsAppearance
+  },
+
+  data () {
+    return {
+      isOpen: false,
+      selectedMenu: 'main',
+      dropdownClasses: [
         'z-10',
         'absolute',
         'top-9',
         '-right-full',
         'sm:right-0',
         'bg-white',
-        'w-60',
+        'w-72',
         'border',
         'border-t-0',
-        'focus:outline-none',
+        'focus:outline-none'
       ]
     }
   },
-  mounted() {
-    window.addEventListener('click', ({target}) => {
-      if (!this.$el.contains(target)) {
+
+  watch: {
+    isOpen () {
+      this.$nextTick(() => this.isOpen && this.$refs.dropdown.focus())
+    }
+  },
+
+  mounted () {
+    window.addEventListener('click', event => {
+      if (!this.$el.contains(event.target)) {
         this.isOpen = false
       }
     })
   },
-  watch: {
-    isOpen() {
-      this.$nextTick(() => {
-        if (this.isOpen) {
-          this.$refs.dropdown.focus()
-        }
-      })
-    },
+
+  methods: {
+    showSelectedMenu (selectedMenu) {
+      this.selectedMenu = selectedMenu
+    }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

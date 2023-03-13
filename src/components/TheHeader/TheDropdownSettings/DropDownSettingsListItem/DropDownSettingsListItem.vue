@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BaseIcon from "../../Common/BaseIcon.vue";
+import BaseIcon from "../../../Common/BaseIcon.vue";
 
 export default {
   name: "DropDownSettingsListItem",
