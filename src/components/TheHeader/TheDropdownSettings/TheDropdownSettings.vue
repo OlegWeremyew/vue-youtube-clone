@@ -1,12 +1,14 @@
 <template>
   <div class="relative">
-    <button
-        @click="isOpen = !isOpen"
-        type="button"
-        class="relative p-2 focus:outline-none"
-    >
-      <BaseIcon name="dotsVertical" class="h-5 w-5"/>
-    </button>
+    <BaseTooltip text="Settings">
+      <button
+          @click="isOpen = !isOpen"
+          type="button"
+          class="relative p-2 focus:outline-none"
+      >
+        <BaseIcon name="dotsVertical" class="h-5 w-5"/>
+      </button>
+    </BaseTooltip>
 
     <transition
         enter-active-class="transition ease-out duration-100"
@@ -21,11 +23,11 @@
           ref="dropdown"
           tabindex="-1"
           @keydown.esc="isOpen = false"
-          class="absolute top-9 -right-full sm:right-0 bg-white w-72 border border-t-0  focus:outline-none"
+          :class="dropdownClasses"
       >
         <section class="py-2 border-b">
           <ul>
-            <DropDownsListItem
+            <DropDownSettingsListItem
                 v-for="listItem in ListItems.slice(0,8)"
                 :key="listItem.label"
                 :icon="listItem.icon"
@@ -36,7 +38,7 @@
         </section>
         <section class="py-2">
           <ul>
-            <DropDownsListItem
+            <DropDownSettingsListItem
                 :label="ListItems[8].label"
                 with-sub-menu
             />
@@ -50,11 +52,11 @@
 <script>
 import BaseIcon from "../../Common/BaseIcon.vue";
 import DropDownSettingsListItem from "./DropDownSettingsListItem.vue";
-import DropDownsListItem from "../TheDropDownApps/DropDownsListItem.vue";
+import BaseTooltip from "../../Common/BaseTooltip.vue";
 
 export default {
   name: "TheDropdownSettings",
-  components: {DropDownsListItem, DropDownSettingsListItem, BaseIcon},
+  components: {BaseTooltip, DropDownSettingsListItem, BaseIcon},
   data: () => ({
     ListItems: [
       {label: 'Appearance: Light', icon: 'sun', withSubMenu: true},
@@ -69,6 +71,22 @@ export default {
     ],
     isOpen: false
   }),
+  computed: {
+    dropdownClasses() {
+      return [
+        'z-10',
+        'absolute',
+        'top-9',
+        '-right-full',
+        'sm:right-0',
+        'bg-white',
+        'w-60',
+        'border',
+        'border-t-0',
+        'focus:outline-none',
+      ]
+    }
+  },
   mounted() {
     window.addEventListener('click', ({target}) => {
       if (!this.$el.contains(target)) {

@@ -1,5 +1,6 @@
 <template>
   <div class="relative">
+    <BaseTooltip text="YouTube Aps">
     <button
         @click="isOpen = !isOpen"
         type="button"
@@ -7,6 +8,7 @@
     >
       <BaseIcon name="viewGrid" class="h-5 w-5"/>
     </button>
+    </BaseTooltip>
 
     <transition
         enter-active-class="transition ease-out duration-100"
@@ -21,7 +23,7 @@
           ref="dropdown"
           tabindex="-1"
           @keydown.esc="isOpen = false"
-          class="absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0 focus:outline-none"
+          :class="dropdownClasses"
       >
         <section class="py-2 border-b">
           <ul>
@@ -48,6 +50,7 @@
 <script>
 import BaseIcon from "../../Common/BaseIcon.vue";
 import DropDownsListItem from "./DropDownsListItem.vue";
+import BaseTooltip from "../../Common/BaseTooltip.vue";
 
 export default {
   name: "TheDropDownApps",
@@ -55,8 +58,25 @@ export default {
     isOpen: false
   }),
   components: {
+    BaseTooltip,
     DropDownsListItem,
     BaseIcon,
+  },
+  computed: {
+    dropdownClasses(){
+      return [
+        'z-10',
+        'absolute',
+        'top-9',
+        'right-0',
+        'sm:left-0',
+        'bg-white',
+        'w-60',
+        'border',
+        'border-t-0',
+        'focus:outline-none',
+      ]
+    }
   },
   mounted() {
     window.addEventListener('click', ({target}) => {
