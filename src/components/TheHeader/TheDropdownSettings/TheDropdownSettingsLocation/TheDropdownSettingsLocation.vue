@@ -1,19 +1,16 @@
 <template>
   <DropdownSettingsHeader
-      title="Appearance"
+      title="Choose Your location"
       @back="$emit('select-menu', 'main')"
   />
   <section class="py-2">
-    <div class="text-gray-500 text-xs p-3">
-      Setting applies to this browser only
-    </div>
-    <ul>
+    <ul class="max-h-96 overflow-auto">
       <DropDownSettingsListItem
-          v-for="(themeName, themeId) in themes"
-          :key="themeId"
-          :label="themeName"
-          :active="themeId === selectedThemeId"
-          @click="this.selectedThemeId = themeId"
+          v-for="(locationName, locationId) in locations"
+          :key="locationId"
+          :label="locationName"
+          :active="locationId === selectedLocationId"
+          @click="this.selectedLocationId = locationId"
       />
     </ul>
   </section>
@@ -25,19 +22,20 @@ import DropDownSettingsListItem from "../DropDownSettingsListItem/DropDownSettin
 import DropdownSettingsHeader from "../DropdownSettingsHeader/DropdownSettingsHeader.vue";
 
 export default {
-  name: 'TheDropdownSettingsAppearance',
+  name: 'TheDropdownSettingsLocation',
   components: {
     DropdownSettingsHeader,
     DropDownSettingsListItem
   },
   emits: ['select-menu'],
   data: () => ({
-    selectedThemeId: 0,
-    themes: [
-      'Use device theme',
-      'Dark theme',
-      'Light theme',
-    ]
+    selectedLocationId: 0,
+    locations: [
+      'United States',
+      'Russian',
+      'France',
+      'China',
+    ],
   }),
 }
 </script>

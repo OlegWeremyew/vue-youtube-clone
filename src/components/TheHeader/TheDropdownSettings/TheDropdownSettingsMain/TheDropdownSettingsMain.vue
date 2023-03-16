@@ -7,7 +7,7 @@
           :label="listItem.label"
           :icon="listItem.icon"
           :with-sub-menu="listItem.withSubMenu"
-          @click.stop="$emit('select-menu', 'appearance')"
+          @click.stop="selectMenu(listItem)"
       />
     </ul>
   </section>
@@ -16,6 +16,8 @@
       <DropDownSettingsListItem
           :label="listItems[8].label"
           :with-sub-menu="listItems[8].withSubMenu"
+          :icon="listItems[8].icon"
+          @click.stop="selectMenu(listItems[8])"
       />
     </ul>
   </section>
@@ -24,62 +26,79 @@
 <script>
 
 import DropDownSettingsListItem from "../DropDownSettingsListItem/DropDownSettingsListItem.vue";
+
 export default {
   name: 'TheDropdownSettingsMain',
   components: {
-    DropDownSettingsListItem
+    DropDownSettingsListItem,
   },
-
-  data () {
+  emits: ['select-menu'],
+  data() {
     return {
       listItems: [
         {
+          id: 'appearance',
           label: 'Appearance: Light',
           icon: 'sun',
-          withSubMenu: true
+          withSubMenu: true,
         },
         {
+          id: 'languages',
           label: 'Language: English',
           icon: 'translate',
-          withSubMenu: true
+          withSubMenu: true,
         },
         {
+          id: 'location',
           label: 'Location: Ukraine',
           icon: 'globeAlt',
-          withSubMenu: true
+          withSubMenu: true,
         },
         {
+          id: 'settings',
           label: 'Settings',
           icon: 'cog',
-          withSubMenu: false
+          withSubMenu: false,
         },
         {
+          id: 'your_data_in-youtube',
           label: 'Your data in YouTube',
           icon: 'shieldCheck',
-          withSubMenu: false
+          withSubMenu: false,
         },
         {
+          id: 'help',
           label: 'Help',
           icon: 'questionMarkCircle',
-          withSubMenu: false
+          withSubMenu: false,
         },
         {
+          id: 'send_feedback',
           label: 'Send feedback',
           icon: 'chatAlt',
-          withSubMenu: false
+          withSubMenu: false,
         },
         {
+          id: 'keyboard_shortcuts',
           label: 'Keyboard shortcuts',
           icon: 'calculator',
-          withSubMenu: false
+          withSubMenu: false,
         },
         {
+          id: 'restricted_mode',
           label: 'Restricted Mode: Off',
           icon: null,
-          withSubMenu: true
-        }
-      ]
+          withSubMenu: true,
+        },
+      ],
     }
-  }
+  },
+  methods: {
+    selectMenu(listItem) {
+      if (listItem.withSubMenu) {
+        this.$emit('select-menu', listItem.id)
+      }
+    },
+  },
 }
 </script>
