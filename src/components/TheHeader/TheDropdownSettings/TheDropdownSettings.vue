@@ -5,6 +5,7 @@
         <BaseIcon name="dotsVertical" class="w-5 h-5"/>
       </button>
     </BaseTooltip>
+
     <transition
         enter-active-class="transition ease-out duration-100"
         enter-from-class="transition opacity-0 scale-95"
@@ -21,10 +22,17 @@
           :class="dropdownClasses"
       >
         <component
+            v-if="selectedMenu"
             :is="menu"
-            @select-menu="showSelectedMenu"
+            :selected-options="selectedOptions"
+            @close="closeMenu"
+            @select-option="selectedOption"
         />
-
+        <TheDropdownSettingsMain
+            v-else
+            :menu-items="menuItem"
+            @select-menu="selectMenu"
+        />
       </div>
     </transition>
   </div>
@@ -52,7 +60,25 @@ export default {
   },
   data: () => ({
     isOpen: false,
-    selectedMenu: 'main',
+    selectedMenu: null,
+    selectedOptions: {
+      theme: {
+        id: 0,
+        text: 'Device theme',
+      },
+      language: {
+        id: 0,
+        text: 'English',
+      },
+      location: {
+        id: 0,
+        text: 'United States',
+      },
+      restrictedMode: {
+        enabled: false,
+        text: 'Off',
+      },
+    },
     dropdownClasses: [
       'z-10',
       'absolute',
@@ -67,17 +93,76 @@ export default {
     ],
   }),
   computed: {
-    menu(){
+    menu() {
       const menuComponentNames = {
-        main: 'TheDropdownSettingsMain',
         appearance: 'TheDropdownSettingsAppearance',
-        languages: 'TheDropdownSettingsLanguages',
-        locations: 'TheDropdownSettingsLanguages',
+        language: 'TheDropdownSettingsLanguages',
+        location: 'TheDropdownSettingsLocation',
         restricted_mode: 'TheDropdownSettingsRestrictedMode',
       }
 
-      return menuComponentNames[this.selectedMenu]
+      return this.selectedMenu
+          ? menuComponentNames[this.selectedMenu.id]
+          : null
     },
+    menuItem() {
+      return [
+        {
+          id: 'appearance',
+          label: `Appearance: ${this.selectedOptions.theme.text}`,
+          icon: 'sun',
+          withSubMenu: true,
+        },
+        {
+          id: 'language',
+          label: `Language:  ${this.selectedOptions.language.text}`,
+          icon: 'translate',
+          withSubMenu: true,
+        },
+        {
+          id: 'location',
+          label: `Location:  ${this.selectedOptions.location.text}`,
+          icon: 'globeAlt',
+          withSubMenu: true,
+        },
+        {
+          id: 'settings',
+          label: 'Settings',
+          icon: 'cog',
+          withSubMenu: false,
+        },
+        {
+          id: 'your_data_in-youtube',
+          label: 'Your data in YouTube',
+          icon: 'shieldCheck',
+          withSubMenu: false,
+        },
+        {
+          id: 'help',
+          label: 'Help',
+          icon: 'questionMarkCircle',
+          withSubMenu: false,
+        },
+        {
+          id: 'send_feedback',
+          label: 'Send feedback',
+          icon: 'chatAlt',
+          withSubMenu: false,
+        },
+        {
+          id: 'keyboard_shortcuts',
+          label: 'Keyboard shortcuts',
+          icon: 'calculator',
+          withSubMenu: false,
+        },
+        {
+          id: 'restricted_mode',
+          label: `Restricted Mode: ${this.selectedOptions.restrictedMode.text}`,
+          icon: null,
+          withSubMenu: true,
+        },
+      ]
+    }
   },
   watch: {
     isOpen() {
@@ -92,22 +177,28 @@ export default {
     })
   },
   methods: {
-    showSelectedMenu(selectedMenu) {
-      this.selectedMenu = selectedMenu
-      this.$refs.dropdown.focus()
-    },
-    close() {
-      this.isOpen = false
-
-      setTimeout(() => {
-        this.selectedMenu = 'main'
-      }, 100)
-    },
     open() {
       this.isOpen = true
     },
     toggle() {
       this.isOpen ? this.close() : this.open()
+    },
+    selectMenu(menu) {
+      this.selectedMenu = menu
+      this.$refs.dropdown.focus()
+    },
+    close() {
+      this.isOpen = false
+
+      setTimeout(this.closeMenu, 100)
+    },
+    closeMenu() {
+      this.selectMenu(null)
+    },
+    selectedOption(option) {
+      this.selectedOptions[option.name].id = option.value.id
+      this.selectedOptions[option.name].enabled = option.value.enabled
+      this.selectedOptions[option.name].text = option.value.text
     },
   },
 }

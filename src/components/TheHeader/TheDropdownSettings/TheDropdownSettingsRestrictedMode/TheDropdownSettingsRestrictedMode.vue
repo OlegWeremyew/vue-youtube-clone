@@ -1,7 +1,7 @@
 <template>
   <DropdownSettingsHeader
       title="Choose Your location"
-      @back="$emit('select-menu', 'main')"
+      @back="$emit('close')"
   />
   <section class="px-3 py-4 text-black text-sm space-y-4">
     <p>
@@ -12,7 +12,11 @@
     </p>
     <div class="text-gray-600 font-semibold flex items-center">
       <span class="uppercase mr-2">Activate restricted mode</span>
-      <input type="checkbox">
+      <input
+          type="checkbox"
+          :checked="selectedOptions.restrictedMode.enabled"
+          @input="selectedOption"
+      >
     </div>
   </section>
 </template>
@@ -28,6 +32,20 @@ export default {
     DropdownSettingsHeader,
     DropDownSettingsListItem
   },
-  emits: ['select-menu'],
+  props: {
+    selectedOptions: Object,
+  },
+  emits: ['close', 'select-option'],
+  methods: {
+    selectedOption($event) {
+      const enabled = $event.target.checked
+      const value = {enabled, text : enabled ? 'On' : 'Off'}
+
+      this.$emit('select-option', {
+        name: 'restrictedMode',
+        value,
+      })
+    },
+  },
 }
 </script>

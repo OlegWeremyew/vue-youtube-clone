@@ -1,7 +1,7 @@
 <template>
   <DropdownSettingsHeader
       title="Choose Your location"
-      @back="$emit('select-menu', 'main')"
+      @back="$emit('close')"
   />
   <section class="py-2">
     <ul class="max-h-96 overflow-auto">
@@ -9,8 +9,8 @@
           v-for="(locationName, locationId) in locations"
           :key="locationId"
           :label="locationName"
-          :active="locationId === selectedLocationId"
-          @click="this.selectedLocationId = locationId"
+          :active="locationId === selectedOptions.location.id"
+          @click="selectedOption({id: locationId, text: locationName})"
       />
     </ul>
   </section>
@@ -27,9 +27,8 @@ export default {
     DropdownSettingsHeader,
     DropDownSettingsListItem
   },
-  emits: ['select-menu'],
+  emits: ['close', 'select-option'],
   data: () => ({
-    selectedLocationId: 0,
     locations: [
       'United States',
       'Russian',
@@ -37,5 +36,16 @@ export default {
       'China',
     ],
   }),
+  props: {
+    selectedOptions: Object,
+  },
+  methods: {
+    selectedOption(location) {
+      this.$emit('select-option', {
+        name: 'location',
+        value: location,
+      })
+    },
+  },
 }
 </script>
