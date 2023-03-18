@@ -12,23 +12,16 @@
             @click="$emit('toggleSidebar')"
             class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none"
         >
-          <BaseIcon name="menu" />
+          <BaseIcon name="menu"/>
         </button>
-        <LogoMain />
+        <LogoMain/>
       </div>
     </div>
-    <TheSearchMobile v-if="isMobileSearchShown" @close="closeMobileSearch">
-      <TheSearch
-          :search-query="searchQuery"
-          @update-search-query="searchQuery = $event"
-      />
-    </TheSearchMobile>
-    <TheSearchMain v-else>
-      <TheSearch
-          :search-query="searchQuery"
-          @update-search-query="searchQuery = $event"
-      />
-    </TheSearchMain>
+    <TheSearchWrapper
+        v-show="isSearchShown"
+        @close="closeMobileSearch"
+        :is-small-screen="isSmallScreen"
+    />
     <div
         :class="[
         'flex',
@@ -43,7 +36,7 @@
     >
       <BaseTooltip text="Search with your voice">
         <button class="sm:hidden p-2 focus:outline-none">
-          <BaseIcon name="microphone" class="w-5 h-5" />
+          <BaseIcon name="microphone" class="w-5 h-5"/>
         </button>
       </BaseTooltip>
       <BaseTooltip text="Search">
@@ -51,12 +44,12 @@
             @click.stop="isMobileSearchActive = true"
             class="sm:hidden p-2 focus:outline-none"
         >
-          <BaseIcon name="search" class="w-5 h-5" />
+          <BaseIcon name="search" class="w-5 h-5"/>
         </button>
       </BaseTooltip>
-      <TheDropdownApps />
-      <TheDropdownSettings />
-      <ButtonLogin />
+      <TheDropdownApps/>
+      <TheDropdownSettings/>
+      <ButtonLogin/>
     </div>
   </header>
 </template>
@@ -66,34 +59,29 @@
 import BaseIcon from "../Common/BaseIcon.vue";
 import BaseTooltip from "../Common/BaseTooltip.vue";
 import ButtonLogin from "../Common/ButtonLogin.vue";
-import TheSearch from "./TheSearch/TheSearch.vue";
-import TheSearchMain from "./TheSearch/TheSearchMain/TheSearchMain.vue";
-import TheSearchMobile from "./TheSearch/TheSearchMobile/TheSearchMobile.vue";
 import LogoMain from "./LogoMain/LogoMain.vue";
 import TheDropdownSettings from "./TheDropdownSettings/TheDropdownSettings.vue";
+import TheDropDownApps from "./TheDropDownApps/TheDropDownApps.vue";
+import TheSearchWrapper from "./TheSearch/TheSearchWrapper/TheSearchWrapper.vue";
 
-let TheDropdownApps;
 export default {
   name: 'TheHeader',
   components: {
+    TheDropDownApps,
     BaseIcon,
     BaseTooltip,
     LogoMain,
     ButtonLogin,
-    TheSearch,
-    TheSearchMain,
-    TheSearchMobile,
-    TheDropdownApps,
-    TheDropdownSettings
+    TheDropdownSettings,
+    TheSearchWrapper
   },
 
   emits: {
     toggleSidebar: null
   },
 
-  data () {
+  data() {
     return {
-      searchQuery: '',
       isSmallScreen: false,
       isMobileSearchActive: false,
       classes: [
@@ -107,19 +95,22 @@ export default {
   },
 
   computed: {
-    isMobileSearchShown () {
+    isMobileSearchShown() {
       return this.isSmallScreen && this.isMobileSearchActive
-    }
+    },
+    isSearchShown() {
+      return this.isMobileSearchShown || !this.isSmallScreen
+    },
   },
 
-  mounted () {
+  mounted() {
     this.onResize()
 
     window.addEventListener('resize', this.onResize)
   },
 
   methods: {
-    onResize () {
+    onResize() {
       if (window.innerWidth < 640) {
         this.isSmallScreen = true
         return
@@ -129,9 +120,9 @@ export default {
       this.isSmallScreen = false
     },
 
-    closeMobileSearch () {
+    closeMobileSearch() {
       this.isMobileSearchActive = false
     }
-  }
+  },
 }
 </script>

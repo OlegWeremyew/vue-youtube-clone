@@ -2,11 +2,16 @@
   <div :class="classes">
     <ul>
       <li
-          v-for="result in results"
-          :key="result"
-          :class="itemClasses"
+          v-for="(text, id) in results"
+          :key="text"
+          :class="getItemClasses(id)"
+          @mouseenter="$emit('search-result-mouseenter', id)"
+          @mouseleave="$emit('search-result-mouseleave')"
+          @click.stop="$emit('search-result-click')"
       >
-        {{ result }}
+        <span
+            @mouseenter="$emit('search-result-mouseenter', id)"
+        >{{ text }}</span>
       </li>
     </ul>
     <a
@@ -21,7 +26,26 @@
 <script>
 export default {
   name: "TheSearchResults",
-  props: ['results'],
+  props: ['results', 'activeResultId'],
+  emits: [
+    'search-result-mouseenter',
+    'search-result-mouseleave',
+    'search-result-click',
+  ],
+  methods: {
+    getItemClasses(resultId) {
+      return [
+        resultId === this.activeResultId
+            ? 'bg-gray-100'
+            : 'bg-transparent',
+        'text-black',
+        'px-3',
+        'py-1',
+        'select-none',
+        'truncate',
+      ]
+    },
+  },
   computed: {
     classes() {
       return [
@@ -33,16 +57,6 @@ export default {
         'border-t-0',
         'border-gray-300',
         'shadow-md pt-4',
-      ]
-    },
-    itemClasses() {
-      return [
-        'hover:bg-gray-100',
-        'text-black',
-        'px-3',
-        'py-1',
-        'select-none',
-        'truncate',
       ]
     },
     reportLinkClasses() {

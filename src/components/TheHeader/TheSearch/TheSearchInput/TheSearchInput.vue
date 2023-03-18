@@ -8,9 +8,9 @@
         :value="query"
         @input="updateQuery($event.target.value)"
         @focus="setState(true)"
-        @click="setState(true)"
-        @blur="setState(false)"
+        @click.stop="setState(true)"
         @keyup.esc="handleEsc"
+        @keydown.enter="handleEnter"
     />
     <button
         type="button"
@@ -31,7 +31,7 @@ export default {
   components: {BaseIcon},
   isActive: false,
   props: ['query', 'hasResults'],
-  emits: ['update:query', 'change-state'],
+  emits: ['update:query', 'change-state', 'enter'],
   computed: {
     classes() {
       return [
@@ -82,6 +82,11 @@ export default {
       } else {
         this.$refs.input.blur()
       }
+    },
+    handleEnter() {
+      this.setState(false)
+      this.$refs.input.blur()
+      this.$emit('enter')
     },
     removeSelection() {
       const end = this.$refs.input.value.length
