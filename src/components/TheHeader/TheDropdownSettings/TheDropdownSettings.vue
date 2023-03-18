@@ -183,8 +183,8 @@ export default {
     toggle() {
       this.isOpen ? this.close() : this.open()
     },
-    selectMenu(menu) {
-      this.selectedMenu = menu
+    selectMenu(menuItem) {
+      this.selectedMenu = menuItem
       this.$refs.dropdown.focus()
     },
     close() {

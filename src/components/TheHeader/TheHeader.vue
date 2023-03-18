@@ -67,7 +67,6 @@
 </template>
 
 <script>
-
 import BaseIcon from "../Common/BaseIcon.vue";
 import BaseTooltip from "../Common/BaseTooltip.vue";
 import LogoMain from "./LogoMain/LogoMain.vue";
