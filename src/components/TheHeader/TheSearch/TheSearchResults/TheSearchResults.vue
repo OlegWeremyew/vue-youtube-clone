@@ -17,15 +17,30 @@
     <a
         href="#"
         :class="reportLinkClasses"
+        @click="openSearchPredictionsModal"
     >
       Report search predictions
     </a>
+
+    <teleport to="body">
+      <TheModalSearchPredictions
+          v-if="isSearchPredictionsModalOpen"
+          @close="isSearchPredictionsModalOpen = false"
+      />
+    </teleport>
+
   </div>
 </template>
 
 <script>
+import TheModalSearchPredictions from "../../TheModalSearchPredictions/TheModalSearchPredictions.vue";
+
 export default {
   name: "TheSearchResults",
+  components: {TheModalSearchPredictions},
+  data: () => ({
+    isSearchPredictionsModalOpen: false,
+  }),
   props: ['results', 'activeResultId'],
   emits: [
     'search-result-mouseenter',
@@ -44,6 +59,9 @@ export default {
         'select-none',
         'truncate',
       ]
+    },
+    openSearchPredictionsModal() {
+      this.isSearchPredictionsModalOpen = true
     },
   },
   computed: {

@@ -1,59 +1,77 @@
 <template>
-  <div
-      :class="classes"
-      tabindex="-1"
-      @keydown.esc="close"
-  >
-    <BaseModalOverlay
-        v-if="isOpen"
-        @click="close"
-    />
-
-    <div
-        v-if="isOpen"
-        class="bg-white w-2/3 m-8 relative"
+  <div :class="classes" tabindex="-1" @keydown.esc="close">
+    <transition
+        appear
+        enter-active-class="ease-out duration-200"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="ease-in duration-100"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
     >
-      <div class="p-2 text-right">
-        <BaseModalButtonClose @click="close"/>
-      </div>
+      <BaseModalOverlay v-if="isOpen" @click="close" />
+    </transition>
 
+    <div v-if="isOpen" class="relative bg-white w-full sm:w-2/3 m-8">
+      <div v-if="withCloseButton" class="p-2 text-right">
+        <BaseModalButtonClose @click="close" />
+      </div>
       <div class="p-6">
-        <slot/>
+        <slot />
+      </div>
+      <div v-if="$slots.footer" class="flex border-t border-gray-300 py-2">
+        <slot name="footer" :close="close" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 import BaseModalButtonClose from "./BaseModalButtonClose/BaseModalButtonClose.vue";
 import BaseModalOverlay from "./BaseModalOverlay/BaseModalOverlay.vue";
 
 export default {
-  name: "BaseModal",
-  data: () => ({
-    isOpen: true,
-    classes: [
-      'fixed',
-      'inset-0',
-      'z-30',
-      'flex',
-      'justify-center',
-      'items-start'
-    ],
-  }),
-  emits: ['close'],
-  components: {BaseModalOverlay, BaseModalButtonClose},
-  methods: {
-    close() {
-      this.isOpen = false
-
-      setTimeout(() => {
-        this.$emit('close')
-      }, 100)
-    },
+  components: {
+    BaseModalButtonClose,
+    BaseModalOverlay
   },
-  mounted() {
+
+  props: {
+    withCloseButton: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  emits: ['close'],
+
+  data () {
+    return {
+      isOpen: true,
+      classes: [
+        'fixed',
+        'inset-0',
+        'z-30',
+        'focus:outline-none',
+        'flex',
+        'justify-center',
+        'items-start',
+        'mx-auto'
+      ]
+    }
+  },
+
+  mounted () {
     this.$el.focus()
   },
+
+  methods: {
+    close () {
+      this.isOpen = false
+
+      setTimeout(() => this.$emit('close'), 100)
+    }
+  }
 }
 </script>
