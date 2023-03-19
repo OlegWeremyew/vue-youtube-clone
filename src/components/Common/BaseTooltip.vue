@@ -6,7 +6,7 @@
         @mouseleave="isShown = false"
         @click="isShown = false"
     >
-      <slot />
+      <slot/>
     </div>
     <transition
         enter-active-class="duration-200"
@@ -30,26 +30,14 @@ export default {
     left: Boolean
   },
 
-  data () {
+  data() {
     return {
       isShown: false,
-      classes: [
-        'bg-gray-600',
-        'bg-opacity-80',
-        'rounded-sm',
-        'text-white',
-        'text-xs',
-        'whitespace-nowrap',
-        'p-2',
-        'transform',
-        'absolute',
-        ...this.getPositionClasses()
-      ]
     }
   },
 
   methods: {
-    getPositionClasses () {
+    getPositionClasses() {
       const topClass = this.top ? 'bottom-12' : 'top-14'
 
       if (this.right) {
@@ -62,6 +50,22 @@ export default {
 
       return [topClass, 'left-1/2', '-translate-x-1/2']
     }
-  }
+  },
+  computed: {
+    classes() {
+      return [
+        'bg-gray-600',
+        'bg-opacity-80',
+        'rounded-sm',
+        'text-white',
+        'text-xs',
+        'whitespace-nowrap',
+        'p-2',
+        'transform',
+        'absolute',
+        ...this.getPositionClasses()
+      ]
+    },
+  },
 }
 </script>

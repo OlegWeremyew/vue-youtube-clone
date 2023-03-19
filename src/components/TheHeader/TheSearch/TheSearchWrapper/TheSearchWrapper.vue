@@ -2,7 +2,11 @@
   <div :class="classes">
 
     <BaseTooltip v-if="isSmallScreen" text="Back" right>
-      <button @click="$emit('close')" class="mr-2 p-2 focus:outline-none">
+      <button
+          type="button"
+          class="mr-2 p-2 focus:outline-none"
+          @click="$emit('close')"
+      >
         <BaseIcon name="arrowLeft" class="w-5 h-5"/>
       </button>
     </BaseTooltip>
@@ -10,7 +14,11 @@
     <TheSearch/>
 
     <BaseTooltip text="Search with your voice" :left="isSmallScreen">
-      <button class="p-2 focus:outline-none">
+      <button
+          type="button"
+          class="p-2 focus:outline-none"
+          @click="$emit('open-voice-modal')"
+      >
         <BaseIcon name="microphone" class="w-5 h-5"/>
       </button>
     </BaseTooltip>
@@ -25,6 +33,7 @@ import TheSearch from "../TheSearch.vue";
 
 export default {
   name: 'TheSearchWrapper',
+  emits: ['close', 'open-voice-modal'],
   components: {
     BaseIcon,
     BaseTooltip,
@@ -58,10 +67,6 @@ export default {
   },
   mounted() {
     window.addEventListener('click', this.onClick)
-  },
-
-  beforeUnmount() {
-    window.removeEventListener('click', this.onClick)
   },
 
   methods: {

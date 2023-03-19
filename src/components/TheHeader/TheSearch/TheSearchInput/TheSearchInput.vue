@@ -32,6 +32,7 @@ export default {
   isActive: false,
   props: ['query', 'hasResults'],
   emits: ['update:query', 'change-state', 'enter'],
+  inject: ['isMobileSearchActive'],
   computed: {
     classes() {
       return [
@@ -49,13 +50,10 @@ export default {
   },
   mounted() {
     if (window.innerWidth < 640) {
-      this.refs.input.focus()
+      this.$refs.input.focus()
     }
 
     document.addEventListener('keydown', this.onKeydown)
-  },
-  beforeUnmount() {
-    document.removeEventListener('keydown', this.onKeydown)
   },
   methods: {
     onKeydown(event) {
@@ -96,6 +94,15 @@ export default {
     clear() {
       this.$refs.input.focus()
       this.updateQuery('')
+    },
+  },
+  watch: {
+    'isMobileSearchActive.value'(isMobileSearchActive) {
+      if (isMobileSearchActive) {
+        this.$nextTick(() => {
+          this.$refs.input.focus()
+        })
+      }
     },
   },
 }

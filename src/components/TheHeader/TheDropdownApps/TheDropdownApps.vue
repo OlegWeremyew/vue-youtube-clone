@@ -53,7 +53,7 @@ import DropDownsListItem from "./DropDownsListItem.vue";
 import BaseTooltip from "../../Common/BaseTooltip.vue";
 
 export default {
-  name: "TheDropDownApps",
+  name: "TheDropdownApps",
   data: () => ({
     isOpen: false
   }),
