@@ -8,7 +8,12 @@
 
     <p class="text-xs text-gray-600 mt-5">The selected predictions are:</p>
 
-    <div class="space-y-3 text-black text-sm mt-5">
+    <!--    <TheSearchPredictionCategories-->
+    <!--        :categories="searchPredictionCategories"-->
+    <!--        v-model="selectedSearchPredictionCategory"-->
+    <!--    />-->
+
+    <div class="space-y-3 text-black text-sm mt-3">
       <div
           v-for="(label, index) in searchPredictionCategories"
           :key="label"
@@ -30,6 +35,14 @@
       </div>
     </div>
 
+    <div class="text-black mt-6 text-sm">
+      <BaseTextarea
+          :value="searchPredictionDetails"
+          :limit="500"
+          @set-value="updateDetailsValue"
+      />
+    </div>
+
     <template v-slot:footer="{ close }">
       <BaseButton @click="close" class="ml-auto">
         Cancel
@@ -47,9 +60,14 @@
 import BaseModal from "../../Common/BaseModal/BaseModal.vue";
 import TheSearchPredictionsList from "./TheSearchPredictionsList/TheSearchPredictionsList.vue";
 import BaseButton from "../../Common/BaseButton.vue";
+import TheSearchPredictionCategories
+  from "./TheSearchPredictionsList/TheSearchPredictionCategories/TheSearchPredictionCategories.vue";
+import BaseTextarea from "../../Common/BaseTextarea.vue";
 
 export default {
   components: {
+    BaseTextarea,
+    TheSearchPredictionCategories,
     BaseButton,
     BaseModal,
     TheSearchPredictionsList
@@ -57,10 +75,10 @@ export default {
   props: {
     searchPredictions: Array
   },
-
   data() {
     return {
       selectedSearchPredictions: [],
+      searchPredictionDetails: '',
       selectedSearchPredictionCategory: null,
       searchPredictionCategories: [
         'Hateful',
@@ -69,6 +87,11 @@ export default {
         'Dangerous and harmful activity',
         'Other'
       ]
+    }
+  },
+  methods: {
+    updateDetailsValue(value) {
+      this.searchPredictionDetails = value
     }
   }
 }

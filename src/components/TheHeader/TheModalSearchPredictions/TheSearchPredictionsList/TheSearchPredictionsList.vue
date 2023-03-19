@@ -5,10 +5,16 @@
         :key="label"
         class="flex items-center"
     >
+<!--      <BaseCheckbox-->
+<!--          :id="`search-prediction-${index}`"-->
+<!--          :value="label"-->
+<!--          v-bind="$attrs"-->
+<!--          v-model="selectedSearchPredictions"-->
+<!--      />-->
       <input
           type="checkbox"
           class="h-5 w-5 cursor-pointer"
-          :id="index"
+          :id="`search-prediction-${index}`"
           :value="label"
           v-model="selectedSearchPredictions"
       />
@@ -20,7 +26,9 @@
 </template>
 
 <script>
+import BaseCheckbox from "../../../Common/BaseCheckbox.vue";
 export default {
+  components: {BaseCheckbox},
   props: {
     searchPredictions: Array,
     modelValue: Array
