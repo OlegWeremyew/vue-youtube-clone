@@ -5,50 +5,69 @@
         v-model="selectedSearchPredictions"
         :search-predictions="searchPredictions"
     />
+
+    <p class="text-xs text-gray-600 mt-5">The selected predictions are:</p>
+
+    <div class="space-y-3 text-black text-sm mt-5">
+      <div
+          v-for="(label, index) in searchPredictionCategories"
+          :key="label"
+          class="flex items-center cursor-pointer"
+      >
+        <input
+            type="radio"
+            class="h-5 w-5 cursor-pointer"
+            :id="`search-prediction-category-${index}`"
+            :value="label"
+            v-model="selectedSearchPredictionCategory"
+        />
+        <label
+            :for="`search-prediction-category-${index}`"
+            class="ml-4 cursor-pointer flex-grow"
+        >
+          {{ label }}
+        </label>
+      </div>
+    </div>
+
     <template v-slot:footer="{ close }">
-      <button
-          @click="close"
-          class="uppercase text-sm font-medium tracking-wider py-2.5 px-4 ml-auto mr-1 focus:outline-none"
-      >
+      <BaseButton @click="close" class="ml-auto">
         Cancel
-      </button>
-      <button
-          class="uppercase text-sm font-medium tracking-wider py-2.5 px-4 ml-1 mr-1 text-gray-400 cursor-auto focus:outline-none"
-      >
+      </BaseButton>
+
+      <BaseButton class="mx-1 text-gray-400 cursor-auto" disabled>
         Report
-      </button>
+      </BaseButton>
     </template>
+
   </BaseModal>
 </template>
 
 <script>
 import BaseModal from "../../Common/BaseModal/BaseModal.vue";
 import TheSearchPredictionsList from "./TheSearchPredictionsList/TheSearchPredictionsList.vue";
+import BaseButton from "../../Common/BaseButton.vue";
 
 export default {
   components: {
+    BaseButton,
     BaseModal,
     TheSearchPredictionsList
+  },
+  props: {
+    searchPredictions: Array
   },
 
   data() {
     return {
       selectedSearchPredictions: [],
-      searchPredictions: [
-        'new york',
-        'new york song',
-        'new york alicia keys',
-        'new york live camera',
-        'new york state of mind',
-        'new york accent',
-        'new york nagaram whatsapp status',
-        'new york snng tik tok',
-        'new york new york frank sinatra',
-        'new york nagaram',
-        'new york jazz',
-        'new york full movie',
-        'new york vlog',
-        'new york jay z'
+      selectedSearchPredictionCategory: null,
+      searchPredictionCategories: [
+        'Hateful',
+        'Sexually Explicit',
+        'Violent',
+        'Dangerous and harmful activity',
+        'Other'
       ]
     }
   }
