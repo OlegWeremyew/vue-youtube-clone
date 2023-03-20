@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import BaseCheckbox from "../../../Common/BaseCheckbox.vue";
+import BaseCheckbox from "../../../Common/BaseCheckbox/BaseCheckbox.vue";
 export default {
   components: {BaseCheckbox},
   props: {

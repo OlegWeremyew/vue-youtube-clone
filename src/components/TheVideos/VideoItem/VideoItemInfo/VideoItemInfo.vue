@@ -24,7 +24,7 @@
 
 <script>
 
-import BaseIcon from "../../../Common/BaseIcon.vue";
+import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
 import VideoItemDropdown from "./VideoItemDropdown/VideoItemDropdown.vue";
 import BaseTooltip from "../../../Common/BaseTooltip.vue";
 

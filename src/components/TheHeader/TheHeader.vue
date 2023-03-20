@@ -52,7 +52,7 @@
 
 <script>
 import {computed} from "vue";
-import BaseIcon from "../Common/BaseIcon.vue";
+import BaseIcon from "../Common/BaseIcon/BaseIcon.vue";
 import BaseTooltip from "../Common/BaseTooltip.vue";
 import ButtonLogin from "../Common/ButtonLogin.vue";
 import LogoMain from "./LogoMain/LogoMain.vue";

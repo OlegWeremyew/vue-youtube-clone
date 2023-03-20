@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseIcon from "../../../Common/BaseIcon.vue";
+import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
 
 const STATUS_IDLE = 'idle'
 const STATUS_LISTENING = 'listening'

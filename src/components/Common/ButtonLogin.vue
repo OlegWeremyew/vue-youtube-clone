@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BaseIcon from "./BaseIcon.vue";
+import BaseIcon from "./BaseIcon/BaseIcon.vue";
 
 export default {
   name: "ButtonLogin",

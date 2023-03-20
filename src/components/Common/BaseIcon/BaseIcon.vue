@@ -4,12 +4,13 @@
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="base-icon"
       v-html="getPath"
   ></svg>
 </template>
 
 <script>
-import {icons} from "../../constants/icons.js";
+import {icons} from "../../../constants/icons.js";
 
 export default {
   name: "BaseIcon",
@@ -17,11 +18,7 @@ export default {
   computed: {
     getPath(){
       return icons[this.name]
-    }
-  }
+    },
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

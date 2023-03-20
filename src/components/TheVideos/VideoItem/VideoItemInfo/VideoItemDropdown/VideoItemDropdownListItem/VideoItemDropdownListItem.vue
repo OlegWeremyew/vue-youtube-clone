@@ -9,7 +9,7 @@
 
 <script>
 
-import BaseIcon from "../../../../../Common/BaseIcon.vue";
+import BaseIcon from "../../../../../Common/BaseIcon/BaseIcon.vue";
 export default {
   components: {
     BaseIcon
