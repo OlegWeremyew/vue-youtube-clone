@@ -10,9 +10,9 @@ test('renders base button', () => {
     },
   }
 
-  //when(act)
+  //when (act)
   render(BaseButton, option)
 
-  //then(assert)
+  //then (assert)
   screen.getByText(/Test Button/i)
 })
