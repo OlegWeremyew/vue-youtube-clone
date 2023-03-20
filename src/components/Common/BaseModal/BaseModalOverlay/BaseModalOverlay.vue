@@ -14,10 +14,6 @@
 
 <script>
 export default {
-  name: "BaseModalOverlay"
+  name: "BaseModalOverlay",
 }
 </script>
-
-<style scoped>
-
-</style>

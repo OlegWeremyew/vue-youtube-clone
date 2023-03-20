@@ -8,6 +8,7 @@
     >
       <slot/>
     </div>
+
     <transition
         enter-active-class="duration-200"
         enter-from-class="opacity-0"
@@ -30,11 +31,9 @@ export default {
     left: Boolean
   },
 
-  data() {
-    return {
-      isShown: false,
-    }
-  },
+  data: () => ({
+    isShown: false,
+  }),
 
   methods: {
     getPositionClasses() {
@@ -49,7 +48,7 @@ export default {
       }
 
       return [topClass, 'left-1/2', '-translate-x-1/2']
-    }
+    },
   },
   computed: {
     classes() {

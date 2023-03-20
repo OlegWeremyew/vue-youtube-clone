@@ -8,6 +8,6 @@
 import BaseIcon from "../../BaseIcon/BaseIcon.vue";
 export default {
   name: "BaseModalButtonClose",
-  components: {BaseIcon}
+  components: {BaseIcon},
 }
 </script>

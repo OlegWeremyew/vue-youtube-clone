@@ -28,7 +28,7 @@
 
 <script>
 import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
-import BaseTooltip from "../../../Common/BaseTooltip.vue";
+import BaseTooltip from "../../../Common/BaseTooltip/BaseTooltip.vue";
 import TheSearch from "../TheSearch.vue";
 
 export default {

@@ -49,7 +49,7 @@ export default {
   computed: {
     classes() {
       return this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-24'
-    }
-  }
+    },
+  },
 }
 </script>

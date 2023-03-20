@@ -21,6 +21,6 @@ export default {
   props: {
     id: String,
     modelValue: String,
-  }
+  },
 }
 </script>
