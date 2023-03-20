@@ -17,14 +17,14 @@
 </template>
 
 <script>
-import BaseTextareaCounter from "./BaseTextareaCounter.vue";
+import BaseTextareaCounter from "../BaseTextareaCounter/BaseTextareaCounter.vue";
 
 export default {
   name: "BaseTextarea",
   components: {BaseTextareaCounter},
   props: {
     value: String,
-    limit: Number
+    limit: Number,
   },
   emits: ['set-value'],
   computed: {

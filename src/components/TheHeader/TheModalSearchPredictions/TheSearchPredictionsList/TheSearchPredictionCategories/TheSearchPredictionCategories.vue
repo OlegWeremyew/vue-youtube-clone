@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseRadio from "../../../../Common/BaseRadio.vue";
+import BaseRadio from "../../../../Common/BaseRadio/BaseRadio.vue";
 
 export default {
   name: "TheSearchPredictionCategories",

@@ -53,8 +53,8 @@
 <script>
 import {computed} from "vue";
 import BaseIcon from "../Common/BaseIcon/BaseIcon.vue";
-import BaseTooltip from "../Common/BaseTooltip.vue";
-import ButtonLogin from "../Common/ButtonLogin.vue";
+import BaseTooltip from "../Common/BaseTooltip/BaseTooltip.vue";
+import ButtonLogin from "../Common/ButtonLogin/ButtonLogin.vue";
 import LogoMain from "./LogoMain/LogoMain.vue";
 import TheDropdownSettings from "./TheDropdownSettings/TheDropdownSettings.vue";
 import TheSearchWrapper from "./TheSearch/TheSearchWrapper/TheSearchWrapper.vue";
@@ -145,7 +145,7 @@ export default {
 
     closeMobileSearch() {
       this.isMobileSearchActive = false
-    }
+    },
   },
 }
 </script>

@@ -8,7 +8,7 @@
 
 <script>
 import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
-import BaseTooltip from "../../../Common/BaseTooltip.vue";
+import BaseTooltip from "../../../Common/BaseTooltip/BaseTooltip.vue";
 
 export default {
   name: "TheSearchButton",

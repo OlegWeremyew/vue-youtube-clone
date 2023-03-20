@@ -1,8 +1,5 @@
 <template>
-  <a
-      href="#"
-      :class="classes"
-  >
+  <a href="#" :class="classes">
     {{ category }}
   </a>
 </template>
@@ -18,7 +15,7 @@ export default {
     isActive: {
       type: Boolean,
       required: true,
-    }
+    },
   },
   computed: {
     classes() {
@@ -38,11 +35,7 @@ export default {
             'bg-gray-100',
             'hover:bg-gray-200'
           ]
-    }
-  }
+    },
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

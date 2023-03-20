@@ -62,7 +62,7 @@ import TheSearchPredictionsList from "./TheSearchPredictionsList/TheSearchPredic
 import BaseButton from "../../Common/BaseButton/BaseButton.vue";
 import TheSearchPredictionCategories
   from "./TheSearchPredictionsList/TheSearchPredictionCategories/TheSearchPredictionCategories.vue";
-import BaseTextarea from "../../Common/BaseTextarea.vue";
+import BaseTextarea from "../../Common/BaseTextarea/BaseTextarea.vue";
 
 export default {
   components: {

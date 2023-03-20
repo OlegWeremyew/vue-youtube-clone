@@ -9,7 +9,7 @@
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
     >
-      <BaseModalOverlay v-if="isOpen" @click="close" />
+      <BaseModalOverlay v-if="isOpen" @click="close"/>
     </transition>
 
     <div
@@ -18,20 +18,19 @@
         style="max-height: calc(100vh - 64px)"
     >
       <div v-if="withCloseButton" class="p-2 text-right">
-        <BaseModalButtonClose @click="close" />
+        <BaseModalButtonClose @click="close"/>
       </div>
       <div class="p-6 overflow-auto">
-        <slot />
+        <slot/>
       </div>
       <div v-if="$slots.footer" class="flex border-t border-gray-300 py-2">
-        <slot name="footer" :close="close" />
+        <slot name="footer" :close="close"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import BaseModalButtonClose from "./BaseModalButtonClose/BaseModalButtonClose.vue";
 import BaseModalOverlay from "./BaseModalOverlay/BaseModalOverlay.vue";
 
@@ -50,28 +49,26 @@ export default {
 
   emits: ['close'],
 
-  data () {
-    return {
-      isOpen: true,
-      classes: [
-        'fixed',
-        'inset-0',
-        'z-30',
-        'focus:outline-none',
-        'flex',
-        'justify-center',
-        'items-start',
-        'mx-auto'
-      ]
-    }
-  },
+  data: () => ({
+    isOpen: true,
+    classes: [
+      'fixed',
+      'inset-0',
+      'z-30',
+      'focus:outline-none',
+      'flex',
+      'justify-center',
+      'items-start',
+      'mx-auto'
+    ]
+  }),
 
-  mounted () {
+  mounted() {
     this.$el.focus()
   },
 
   methods: {
-    close () {
+    close() {
       this.isOpen = false
 
       setTimeout(() => this.$emit('close'), 100)
