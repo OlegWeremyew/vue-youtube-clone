@@ -59,7 +59,7 @@
 <script>
 import BaseModal from "../../Common/BaseModal/BaseModal.vue";
 import TheSearchPredictionsList from "./TheSearchPredictionsList/TheSearchPredictionsList.vue";
-import BaseButton from "../../Common/BaseButton.vue";
+import BaseButton from "../../Common/BaseButton/BaseButton.vue";
 import TheSearchPredictionCategories
   from "./TheSearchPredictionsList/TheSearchPredictionCategories/TheSearchPredictionCategories.vue";
 import BaseTextarea from "../../Common/BaseTextarea.vue";
