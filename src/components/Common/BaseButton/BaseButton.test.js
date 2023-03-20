@@ -14,5 +14,5 @@ test('renders base button', () => {
   render(BaseButton, option)
 
   //then (assert)
-  screen.getByText(/Test Button/i)
+  expect(screen.getByText(/Test Button/i).innerHTML).toBeTruthy()
 })

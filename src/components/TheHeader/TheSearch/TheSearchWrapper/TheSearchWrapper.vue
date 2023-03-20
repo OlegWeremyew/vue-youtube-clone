@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import BaseIcon from "../../../Common/BaseIcon.vue";
+import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
 import BaseTooltip from "../../../Common/BaseTooltip.vue";
 import TheSearch from "../TheSearch.vue";
 

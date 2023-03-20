@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import BaseIcon from "../../Common/BaseIcon.vue";
+import BaseIcon from "../../Common/BaseIcon/BaseIcon.vue";
 import DropDownsListItem from "./DropDownsListItem.vue";
 import BaseTooltip from "../../Common/BaseTooltip.vue";
 
