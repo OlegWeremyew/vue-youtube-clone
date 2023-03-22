@@ -27,16 +27,14 @@ const STATUS_RECORDING = 'recording'
 const STATUS_QUIET = 'quiet'
 
 export default {
-  components: {
-    BaseIcon
-  },
+  components: {BaseIcon},
 
   emits: ['change-text'],
 
   data () {
     return {
       status: STATUS_LISTENING,
-      recordingTimeout: null
+      recordingTimeout: null,
     }
   },
 
@@ -143,7 +141,7 @@ export default {
 
     isStatus (...statuses) {
       return statuses.includes(this.status)
-    }
-  }
+    },
+  },
 }
 </script>

@@ -15,7 +15,7 @@ export default {
   props: {
     isActive: Boolean,
     label: String,
-    icon: String
+    icon: String,
   },
   components: {BaseIcon},
   computed: {
@@ -30,11 +30,7 @@ export default {
       ]
 
       return this.isActive ? [...classes, 'text-red-500'] : classes
-    }
-  }
+    },
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

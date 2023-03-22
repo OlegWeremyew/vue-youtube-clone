@@ -1,11 +1,21 @@
 <template>
   <div>
-    <a v-for="link in links.slice(0, 7)" :key="link" href="#" class="mr-2">
+    <a
+        v-for="link in links.slice(0, 7)"
+        :key="link"
+        href="#"
+        class="mr-2"
+    >
       {{ link }}
     </a>
   </div>
   <div>
-    <a v-for="link in links.slice(7)" :key="link" href="#" class="mr-2">
+    <a
+        v-for="link in links.slice(7)"
+        :key="link"
+        href="#"
+        class="mr-2"
+    >
       {{ link }}
     </a>
   </div>
@@ -30,12 +40,8 @@ export default {
       'Privacy',
       'Policy & Safety',
       'How YouTube works',
-      'Test new features'
-    ]
-  })
+      'Test new features',
+    ],
+  }),
 }
 </script>
-
-<style scoped>
-
-</style>

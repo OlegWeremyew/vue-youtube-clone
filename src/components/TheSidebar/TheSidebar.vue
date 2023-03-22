@@ -22,7 +22,7 @@ export default {
         'bg-white',
         'z-20',
       ]
-    }
-  }
+    },
+  },
 }
 </script>

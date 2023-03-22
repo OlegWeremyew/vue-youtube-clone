@@ -1,9 +1,6 @@
 <template>
   <li>
-    <a
-        href="#"
-        :class="classes"
-    >
+    <a href="#" :class="classes">
       <base-icon
           :name="icon"
           :class="iconClasses"
@@ -35,11 +32,7 @@ export default {
       return this.isActive
           ? 'w-6 h-6 mr-6 text-red-500'
           : 'w-6 h-6 mr-6'
-    }
-  }
+    },
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -32,6 +32,6 @@ export default {
         'hover:bg-gray-200',
       ]
     },
-  }
+  },
 }
 </script>
