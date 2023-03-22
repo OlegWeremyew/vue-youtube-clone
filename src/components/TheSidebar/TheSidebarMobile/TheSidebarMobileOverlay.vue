@@ -3,12 +3,7 @@
 </template>
 
 <script>
-
 export default {
   name: "TheSidebarMobileOverlay",
 }
 </script>
-
-<style scoped>
-
-</style>

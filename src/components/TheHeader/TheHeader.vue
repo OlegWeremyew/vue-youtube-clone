@@ -3,6 +3,7 @@
     <div :class="leftSideClass">
       <div class="flex items-center xl:w-64 xl:bg-white pl-4">
         <button
+            type="button"
             @click="$emit('toggleSidebar')"
             class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none"
         >

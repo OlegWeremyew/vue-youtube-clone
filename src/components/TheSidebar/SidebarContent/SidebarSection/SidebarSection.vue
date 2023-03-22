@@ -6,10 +6,6 @@
 
 <script>
 export default {
-  name: "SidebarSection"
+  name: "SidebarSection",
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,7 +1,11 @@
 <template>
   <div :class="classes">
 
-    <BaseTooltip v-if="isSmallScreen" text="Back" right>
+    <BaseTooltip
+        v-if="isSmallScreen"
+        text="Back"
+        right
+    >
       <button
           type="button"
           class="mr-2 p-2 focus:outline-none"

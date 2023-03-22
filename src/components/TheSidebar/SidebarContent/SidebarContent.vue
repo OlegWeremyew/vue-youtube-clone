@@ -25,6 +25,7 @@
 
   <SidebarSection>
     <SidebarSectionHeading title="Best of YouTube"/>
+
     <ul>
       <SidebarNavItem label="Music" icon="musicNote"/>
       <SidebarNavItem label="Sports" icon="speakerphone"/>
@@ -77,7 +78,3 @@ export default {
   components: {TheFooter, SidebarSection, SidebarSectionHeading, SidebarNavItem, ButtonLogin}
 }
 </script>
-
-<style scoped>
-
-</style>

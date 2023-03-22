@@ -26,7 +26,7 @@ export default {
       {label: 'Subscription', icon: 'collection', isActive: false},
       {label: 'Library', icon: 'duplicate', isActive: false},
       {label: 'History', icon: 'clock', isActive: false},
-    ]
+    ],
   }),
   components: {TheSideBarCompactNavItem},
   computed: {
@@ -40,7 +40,7 @@ export default {
         'bg-white',
         'z-20'
       ]
-    }
-  }
+    },
+  },
 }
 </script>
