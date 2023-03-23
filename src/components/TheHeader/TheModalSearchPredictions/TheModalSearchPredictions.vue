@@ -2,7 +2,7 @@
   <BaseModal class="md:w-4/5 max-w-2xl">
     <p class="text-base text-black tracking-wide">Report search predictions</p>
     <TheSearchPredictionsList
-        v-model="selectedSearchPredictions"
+        :list="selectedSearchPredictions"
         :search-predictions="searchPredictions"
     />
 
@@ -75,8 +75,7 @@ export default {
   props: {
     searchPredictions: Array
   },
-  data() {
-    return {
+  data: () => ({
       selectedSearchPredictions: [],
       searchPredictionDetails: '',
       selectedSearchPredictionCategory: null,
@@ -86,13 +85,12 @@ export default {
         'Violent',
         'Dangerous and harmful activity',
         'Other'
-      ]
-    }
-  },
+      ],
+  }),
   methods: {
     updateDetailsValue(value) {
       this.searchPredictionDetails = value
-    }
-  }
+    },
+  },
 }
 </script>

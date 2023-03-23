@@ -29,23 +29,20 @@
 import BaseCheckbox from "../../../Common/BaseCheckbox/BaseCheckbox.vue";
 export default {
   components: {BaseCheckbox},
-  props: {
-    searchPredictions: Array,
-    modelValue: Array
-  },
-
-  emits: ['update:modelValue'],
-
   data () {
     return {
       selectedSearchPredictions: this.modelValue
     }
   },
-
+  props: {
+    searchPredictions: Array,
+    modelValue: Array
+  },
+  emits: ['update:modelValue'],
   watch: {
     selectedSearchPredictions () {
       this.$emit('update:modelValue', this.selectedSearchPredictions)
-    }
-  }
+    },
+  },
 }
 </script>
