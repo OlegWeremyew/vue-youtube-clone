@@ -49,7 +49,7 @@
 
 <script>
 import BaseIcon from "../../Common/BaseIcon/BaseIcon.vue";
-import DropDownsListItem from "./DropDownsListItem.vue";
+import DropDownsListItem from "./DropDownsListItem/DropDownsListItem.vue";
 import BaseTooltip from "../../Common/BaseTooltip/BaseTooltip.vue";
 
 export default {

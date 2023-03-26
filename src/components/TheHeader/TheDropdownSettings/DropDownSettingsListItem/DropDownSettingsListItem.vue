@@ -10,11 +10,7 @@
           :name="iconName"
           class="w-5 h-5 mr-3 text-gray-400"
       />
-      <span :class="[
-          'truncate',
-          'flex-1',
-          {'ml-8': !isIconShown && icon}]"
-      >
+      <span :class="['truncate','flex-1',{'ml-8': !isIconShown && icon}]">
         {{ label }}
       </span>
       <BaseIcon
@@ -59,7 +55,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>

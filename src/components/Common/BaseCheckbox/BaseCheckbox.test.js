@@ -14,15 +14,11 @@ it('renders with label and checked', () => {
 
   render(BaseCheckbox, option)
 
-  const checkbox = screen.getByLabelText(label)
-
-  expect(checkbox.checked).toBe(false)
+  expect(screen.getByLabelText(label)).not.toBeChecked()
 })
 
 it('renders unchecked', () => {
   render(BaseCheckbox)
 
-  const checkbox = screen.getByRole('checkbox')
-
-  expect(checkbox.checked).toBe(false)
+  expect(screen.getByRole('checkbox')).not.toBeChecked()
 })

@@ -1,5 +1,8 @@
-import {screen, render, fireEvent, waitForElementToBeRemoved} from "@testing-library/vue";
+import {screen, render, waitForElementToBeRemoved} from "@testing-library/vue";
 import TheModalSearchPredictions from "./TheModalSearchPredictions.vue";
+import userEvent from '@testing-library/user-event'
+
+const user = userEvent.setup()
 
 const predictions = ['Predictions 1', 'Predictions 2', 'Predictions 3',]
 const categories = ['Category 1', 'Category 2', 'Category 3',]
@@ -35,7 +38,7 @@ describe('when closed', () => {
   it('does not show search predictions', () => {
     renderModal(predictions)
 
-    fireEvent.click(screen.getByRole('button', {
+    user.click(screen.getByRole('button', {
       name: 'Cancel',
     }))
 
@@ -45,7 +48,7 @@ describe('when closed', () => {
   it('does not show search prediction categories', () => {
     renderModal(categories)
 
-    fireEvent.click(screen.getByRole('button', {
+    user.click(screen.getByRole('button', {
       name: 'Cancel',
     }))
 

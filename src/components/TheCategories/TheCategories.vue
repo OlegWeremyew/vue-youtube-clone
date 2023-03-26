@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import CategoryItem from "./CategoryItem.vue";
+import CategoryItem from "./CategoryItem/CategoryItem.vue";
 
 export default {
   name: "TheCategories",
