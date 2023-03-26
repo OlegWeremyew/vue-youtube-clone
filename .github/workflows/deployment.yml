@@ -1,7 +1,7 @@
-name: Test Vue App
+name: Build Vue App
 on: push
 jobs:
-  test:
+  build:
     runs-on: windows-latest
     steps:
       - name: Get the repository code
@@ -10,3 +10,7 @@ jobs:
         run: npm install
       - name: Test application
         run: npm run test
+      - name: Build application
+        run: npm run build
+      - name: Deploy
+        run: echo Deploying ...
