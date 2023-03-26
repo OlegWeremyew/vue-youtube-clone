@@ -1,6 +1,9 @@
-import {render, screen, fireEvent, waitForElementToBeRemoved} from '@testing-library/vue';
+import {render, screen, waitForElementToBeRemoved} from '@testing-library/vue';
 import BaseModal from "./BaseModal.vue";
 import {icons} from "../../../constants/icons";
+import userEvent from '@testing-library/user-event'
+
+const user = userEvent.setup()
 
 const body = 'This is body'
 
@@ -38,14 +41,16 @@ describe('rendering', () => {
     const withCloseButton = true
     renderModal("", "", withCloseButton)
 
-    expect(screen.getByTestId('base-icon').innerHTML).toBe(icons['x'])
+    //expect(screen.getByTestId('base-icon').innerHTML).toBe(icons['x'])
+    expect(screen.getByTestId('base-icon')).toContainHTML(icons['x'])
   })
 
   it('renders without close button', () => {
     const withCloseButton = false
     renderModal("", "", withCloseButton)
 
-    expect(screen.queryByTestId('base-icon')).toBeNull()
+    //expect(screen.queryByTestId('base-icon')).toBeNull()
+    expect(screen.queryByTestId('base-icon')).not.toBeInTheDocument()
   })
 })
 
@@ -54,7 +59,7 @@ describe('closing', () => {
     const withCloseButton = true
     renderModal(body, '', withCloseButton)
 
-    fireEvent.click(screen.getByTestId('base-modal-button-close'))
+    user.click(screen.getByTestId('base-modal-button-close'))
 
     return assertModalClosed(body)
   })
@@ -62,7 +67,7 @@ describe('closing', () => {
   it('close when clicking overlay', () => {
     renderModal(body)
 
-    fireEvent.click(screen.getByTestId('base-modal-overlay'))
+    user.click(screen.getByTestId('base-modal-overlay'))
 
     return assertModalClosed(body)
   })
@@ -75,7 +80,7 @@ describe('closing', () => {
         `
     renderModal(body, footer)
 
-    fireEvent.click(screen.getByRole('button', {
+    user.click(screen.getByRole('button', {
       name: 'Cancel',
     }))
 
@@ -85,9 +90,9 @@ describe('closing', () => {
   it('close when pressing qsc key', () => {
     renderModal(body)
 
-    fireEvent.keyDown(screen.getByRole('dialog'), {
-      key: 'Esc',
-    })
+    screen.getByRole('dialog').focus()
+
+    user.keyboard('{Escape}')
 
     return assertModalClosed(body)
   })

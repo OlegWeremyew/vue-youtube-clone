@@ -1,7 +1,7 @@
 {
   "name": "vue-youtube-clone",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^14.2.5",
     "@testing-library/vue": "^6.4.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.5",

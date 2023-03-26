@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+"<transition-stub enteractiveclass=\\"ease-out duration-200\\" enterfromclass=\\"transition opacity-0\\" entertoclass=\\"opacity-100\\" leaveactiveclass=\\"ease-in duration-100\\" leavefromclass=\\"opacity-100\\" leavetoclass=\\"opacity-0\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
+  <div class=\\"fixed inset-0 bg-black bg-opacity-80\\" data-testid=\\"base-modal-overlay\\"></div>
+</transition-stub>"
+`;
