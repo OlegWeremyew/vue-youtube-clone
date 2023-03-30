@@ -8,7 +8,7 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
 import BaseIcon from "../../BaseIcon/BaseIcon.vue";
 export default {
   name: "BaseModalButtonClose",

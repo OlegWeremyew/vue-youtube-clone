@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/vue';
 import BaseIcon from "./BaseIcon.vue";
-import {icons} from "../../../constants/icons.js";
+import {icons} from "@/constants/icons.js";
 
 const existingIconName = Object.keys(icons)[0]
 const noneExistingIconName = 'nonExistentIcon'

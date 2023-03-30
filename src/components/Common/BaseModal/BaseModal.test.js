@@ -1,6 +1,6 @@
 import {render, screen, waitForElementToBeRemoved} from '@testing-library/vue';
 import BaseModal from "./BaseModal.vue";
-import {icons} from "../../../constants/icons";
+import {icons} from "@/constants/icons";
 import userEvent from '@testing-library/user-event'
 
 const user = userEvent.setup()

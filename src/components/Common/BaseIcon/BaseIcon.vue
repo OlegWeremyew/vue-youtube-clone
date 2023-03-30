@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {icons} from "../../../constants/icons.js";
+import {icons} from "@/constants/icons.js";
 
 export default {
   name: "BaseIcon",

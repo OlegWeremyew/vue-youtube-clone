@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 import TheSearchInput from "./TheSearchInput/TheSearchInput.vue";
 import TheSearchButton from "./TheSearchButton/TheSearchButton.vue";
 import TheSearchResults from "./TheSearchResults/TheSearchResults.vue";
@@ -36,9 +35,8 @@ export default {
   components: {
     TheSearchInput,
     TheSearchButton,
-    TheSearchResults
+    TheSearchResults,
   },
-
   data() {
     return {
       query: '',
@@ -61,7 +59,7 @@ export default {
         'new york giants injury',
         'new york giants live stream',
         'new york accent'
-      ]
+      ],
     }
   },
 

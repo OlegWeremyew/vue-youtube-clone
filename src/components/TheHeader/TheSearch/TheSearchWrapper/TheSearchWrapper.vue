@@ -1,6 +1,5 @@
 <template>
   <div :class="classes">
-
     <BaseTooltip
         v-if="isSmallScreen"
         text="Back"
