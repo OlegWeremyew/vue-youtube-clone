@@ -1,7 +1,7 @@
 import DropdownSettingsHeader
-  from "../components/TheHeader/TheDropdownSettings/DropdownSettingsHeader/DropdownSettingsHeader.vue";
+  from "@/components/TheHeader/TheDropdownSettings/DropdownSettingsHeader/DropdownSettingsHeader.vue";
 import DropDownSettingsListItem
-  from "../components/TheHeader/TheDropdownSettings/DropDownSettingsListItem/DropDownSettingsListItem.vue";
+  from "@/components/TheHeader/TheDropdownSettings/DropDownSettingsListItem/DropDownSettingsListItem.vue";
 
 export default {
   components: {

@@ -9,6 +9,6 @@ export default {
   name: "SidebarSectionHeading",
   props: {
     title: String,
-  }
+  },
 }
 </script>

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
+import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 
 const STATUS_IDLE = 'idle'
 const STATUS_LISTENING = 'listening'
@@ -28,16 +28,13 @@ const STATUS_QUIET = 'quiet'
 
 export default {
   components: {BaseIcon},
-
   emits: ['change-text'],
-
   data () {
     return {
       status: STATUS_LISTENING,
       recordingTimeout: null,
     }
   },
-
   computed: {
     buttonClasses () {
       const bgColorClass = this.isStatus(STATUS_LISTENING, STATUS_RECORDING)

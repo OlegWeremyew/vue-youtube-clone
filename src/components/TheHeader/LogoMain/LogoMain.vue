@@ -32,10 +32,6 @@
 
 <script>
 export default {
-  name: "LogoMain"
+  name: "LogoMain",
 }
 </script>
-
-<style scoped>
-
-</style>

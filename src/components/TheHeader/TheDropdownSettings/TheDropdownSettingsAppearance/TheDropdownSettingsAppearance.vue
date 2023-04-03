@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import dropdownSubmenu from "../../../../mixins/dropdownSubmenu.js";
+import dropdownSubmenu from "@/mixins/dropdownSubmenu.js";
 
 export default {
   name: 'TheDropdownSettingsAppearance',
@@ -31,7 +31,7 @@ export default {
       'Device theme',
       'Dark theme',
       'Light theme',
-    ]
+    ],
   }),
 }
 </script>

@@ -32,9 +32,8 @@
 </template>
 
 <script>
-
 import VideoItemDropdownListItem from "./VideoItemDropdownListItem/VideoItemDropdownListItem.vue";
-import BaseIcon from "../../../../Common/BaseIcon/BaseIcon.vue";
+import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 
 export default {
   components: {

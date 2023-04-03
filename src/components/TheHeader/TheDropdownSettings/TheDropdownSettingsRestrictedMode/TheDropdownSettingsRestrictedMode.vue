@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import dropdownSubmenu from "../../../../mixins/dropdownSubmenu.js";
+import dropdownSubmenu from "@/mixins/dropdownSubmenu.js";
 
 export default {
   mixins: [dropdownSubmenu],

@@ -41,8 +41,8 @@
 </template>
 <script>
 import TheSidebarMobileOverlay from "./TheSidebarMobileOverlay.vue";
-import BaseIcon from "../../Common/BaseIcon/BaseIcon.vue";
-import LogoMain from "../../TheHeader/LogoMain/LogoMain.vue";
+import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
+import LogoMain from "@/components/TheHeader/LogoMain/LogoMain.vue";
 import SidebarContent from "../SidebarContent/SidebarContent.vue";
 
 export default {

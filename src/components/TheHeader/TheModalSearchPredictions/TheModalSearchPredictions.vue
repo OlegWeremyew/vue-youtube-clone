@@ -57,12 +57,12 @@
 </template>
 
 <script>
-import BaseModal from "../../Common/BaseModal/BaseModal.vue";
+import BaseModal from "@/components/Common/BaseModal/BaseModal.vue";
 import TheSearchPredictionsList from "./TheSearchPredictionsList/TheSearchPredictionsList.vue";
-import BaseButton from "../../Common/BaseButton/BaseButton.vue";
+import BaseButton from "@/components/Common/BaseButton/BaseButton.vue";
 import TheSearchPredictionCategories
   from "./TheSearchPredictionsList/TheSearchPredictionCategories/TheSearchPredictionCategories.vue";
-import BaseTextarea from "../../Common/BaseTextarea/BaseTextarea.vue";
+import BaseTextarea from "@/components/Common/BaseTextarea/BaseTextarea.vue";
 
 export default {
   components: {

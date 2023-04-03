@@ -9,14 +9,14 @@
 
 <script>
 
-import BaseIcon from "../../../../../Common/BaseIcon/BaseIcon.vue";
+import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 export default {
   components: {
-    BaseIcon
+    BaseIcon,
   },
   props: {
     label: String,
-    icon: String
-  }
+    icon: String,
+  },
 }
 </script>

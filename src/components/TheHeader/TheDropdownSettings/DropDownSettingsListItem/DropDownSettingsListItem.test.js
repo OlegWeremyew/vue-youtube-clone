@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/vue';
 import DropDownSettingsListItem from "./DropDownSettingsListItem.vue";
-import {icons} from '../../../../constants/icons'
+import {icons} from '@/constants/icons'
 
 function renderListItem(label = '', icon = null, withSubMenu = false, active = false) {
   const options = {

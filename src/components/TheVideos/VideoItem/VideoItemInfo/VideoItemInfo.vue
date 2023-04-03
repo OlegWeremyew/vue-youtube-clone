@@ -24,9 +24,9 @@
 
 <script>
 
-import BaseIcon from "../../../Common/BaseIcon/BaseIcon.vue";
+import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 import VideoItemDropdown from "./VideoItemDropdown/VideoItemDropdown.vue";
-import BaseTooltip from "../../../Common/BaseTooltip/BaseTooltip.vue";
+import BaseTooltip from "@/components/Common/BaseTooltip/BaseTooltip.vue";
 
 export default {
   components: {
@@ -45,6 +45,5 @@ export default {
       return `Channel name ${this.index}`
     }
   },
-
 }
 </script>

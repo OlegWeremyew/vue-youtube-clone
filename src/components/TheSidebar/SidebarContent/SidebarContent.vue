@@ -71,7 +71,7 @@ import TheFooter from "./TheFooter/TheFooter.vue";
 import SidebarSection from "./SidebarSection/SidebarSection.vue";
 import SidebarSectionHeading from "./SidebarSectionHeading/SidebarSectionHeading.vue";
 import SidebarNavItem from "./SidebarNavItem/SidebarNavItem.vue";
-import ButtonLogin from "../../Common/ButtonLogin/ButtonLogin.vue";
+import ButtonLogin from "@/components/Common/ButtonLogin/ButtonLogin.vue";
 
 export default {
   name: "SidebarContent",
