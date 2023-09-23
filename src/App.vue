@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
 import TheSidebarCompact from "./components/TheSidebar/TheSidebarCompact/TheSidebarCompact.vue";
 import TheSidebar from "./components/TheSidebar/TheSidebar.vue";
 import TheSidebarMobile from "./components/TheSidebar/TheSidebarMobile/TheSidebarMobile.vue";
@@ -61,9 +60,7 @@ export default {
   },
   mounted() {
     this.onResize()
-
     window.addEventListener('resize', this.onResize)
   },
 }
-
 </script>

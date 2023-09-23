@@ -157,11 +157,10 @@ export default {
         'focus:outline-none',
         ...this.positionClasses
       ]
-    }
+    },
   },
   watch: {
     isOpen() {
-      //document.body.classList.toggle('overflow-hidden')
       this.$nextTick(() => this.isOpen && this.$refs.dropdown.focus())
     }
   },

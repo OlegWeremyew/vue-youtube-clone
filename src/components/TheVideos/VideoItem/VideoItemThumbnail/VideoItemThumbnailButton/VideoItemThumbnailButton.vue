@@ -17,7 +17,7 @@ import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 export default {
   name: "VideoItemThumbnailButton",
   data: () => ({
-    isBadgeShow: false
+    isBadgeShow: false,
   }),
   props: {
     icon: String,

@@ -23,7 +23,6 @@
 </template>
 
 <script>
-
 import BaseIcon from "@/components/Common/BaseIcon/BaseIcon.vue";
 import VideoItemDropdown from "./VideoItemDropdown/VideoItemDropdown.vue";
 import BaseTooltip from "@/components/Common/BaseTooltip/BaseTooltip.vue";
@@ -32,7 +31,7 @@ export default {
   components: {
     BaseTooltip,
     VideoItemDropdown,
-    BaseIcon
+    BaseIcon,
   },
   props: ['index'],
   computed: {

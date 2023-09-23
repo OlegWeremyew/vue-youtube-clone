@@ -22,9 +22,9 @@ export default {
             : 'md:ml-24',
         'pt-32',
         'px-5',
-        'pb-5'
+        'pb-5',
       ]
-    }
-  }
+    },
+  },
 }
 </script>

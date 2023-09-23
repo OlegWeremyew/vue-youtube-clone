@@ -95,8 +95,8 @@ export default {
         'justify-between',
         'w-full',
         'bg-white',
-        'bg-opacity-95'
-      ]
+        'bg-opacity-95',
+      ],
     }
   },
 
@@ -129,7 +129,6 @@ export default {
 
   mounted() {
     this.onResize()
-
     window.addEventListener('resize', this.onResize)
   },
 

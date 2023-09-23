@@ -18,10 +18,6 @@ import VideoItemThumbnailButton from "./VideoItemThumbnailButton/VideoItemThumbn
 export default {
   name: "VideoItemThumbnail",
   components: {VideoItemThumbnailButton, BaseIcon},
-  props: ['index']
+  props: ['index'],
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -6,7 +6,7 @@ import DropDownSettingsListItem
 export default {
   components: {
     DropdownSettingsHeader,
-    DropDownSettingsListItem
+    DropDownSettingsListItem,
   },
   data: () => ({
     optionName: null,

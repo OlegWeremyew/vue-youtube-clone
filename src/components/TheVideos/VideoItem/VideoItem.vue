@@ -15,8 +15,8 @@ export default {
   props: {
     index: {
       type: Number,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
